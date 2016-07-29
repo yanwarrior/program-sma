@@ -1,0 +1,12 @@
+{% extends "akun/base.html" %}
+
+{% block title %}Logout{% endblock %}
+
+{% block content %}
+	<h1>Logout Absensi</h1>
+
+	<p class="field_error" style="color: blue; margin:10px;">
+		Anda berhasil keluar dari sistem. Anda bisa
+		<a href="{% url 'login' %}">Login kembali</a>.
+	</p>
+{% endblock %}

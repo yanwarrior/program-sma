@@ -1,0 +1,36 @@
+{% extends "akun/base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+	<h1>Login Absensi</h1>
+
+
+	<form action="{% url 'login' %}" method="post" id="login_form">
+		{% if form.errors %}
+			<p class="field_error">Username dan pasword tidak cocok. silahkan coba kembali.</p>
+		{% endif %}
+		{% if form.username.errors %}
+			{% for error in form.username.errors %}
+				<p class="field_error">{{ error|escape }}</p>
+			{% endfor %}
+		{% endif %}
+		<p>
+			{{ form.username.label_tag }}
+			{{ form.username }}
+		</p>
+		{% if form.password.errors %}
+			{% for error in form.password.errors %}
+				<p class="field_error">{{ error|escape }}</p>
+			{% endfor %}
+		{% endif %}
+		<p>
+			{{ form.password.label_tag }}
+			{{ form.password }}
+		</p>
+
+		{% csrf_token %}
+		<input type="hidden" name="next" value="{{ next }}"/>
+		<p><input type="submit" value="Login" id="submit"/></p>
+	</form>
+{% endblock %}
